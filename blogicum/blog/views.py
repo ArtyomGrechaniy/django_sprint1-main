@@ -46,7 +46,7 @@ posts = [
 
 
 def post_detail(request, post_id):
-    if not post_id in [post['id'] for post in posts]:
+    if post_id not in [post['id'] for post in posts]:
         raise Http404('Страница не найдена')
     context = {'post': posts[post_id]}
     return render(request, 'blog/detail.html', context)
