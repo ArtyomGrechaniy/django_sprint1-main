@@ -46,6 +46,7 @@ posts = [
 
 posts_id = [post['id'] for post in posts]
 
+
 def post_detail(request, post_id):
     if post_id not in posts_id:
         raise Http404(f'Страница {post_id} не найдена')
