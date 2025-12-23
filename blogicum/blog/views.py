@@ -44,12 +44,12 @@ posts = [
     },
 ]
 
+posts_id = [post['id'] for post in posts]
 
 def post_detail(request, post_id):
-    if post_id not in [post['id'] for post in posts]:
-        raise Http404('Страница не найдена')
-    context = {'post': posts[post_id]}
-    return render(request, 'blog/detail.html', context)
+    if post_id not in posts_id:
+        raise Http404(f'Страница {post_id} не найдена')
+    return render(request, 'blog/detail.html', {'post': posts[post_id]})
 
 
 def category_posts(request, category_slug):
